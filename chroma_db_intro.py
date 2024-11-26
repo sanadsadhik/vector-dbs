@@ -27,10 +27,33 @@ article_collection = chroma_client.create_collection(name='medium-article')
 # if we do not specify embeddings, then chromadb will use it own default embedding model
 
 #inserting data
-article_collection.add(
+# article_collection.add(
+#     ids=[f"{x}" for x in df.index.tolist()],
+#     documents=df['text'].tolist(),
+#     metadatas=df['meta'].tolist()
+# )
+
+article_collection.upsert(
     ids=[f"{x}" for x in df.index.tolist()],
     documents=df['text'].tolist(),
     metadatas=df['meta'].tolist()
 )
 
+# add - adds new row to the collection, gives error if the row already exists
+# upsert - just updates if the row already exists, if not then it adds
+
+data = article_collection.get()
+
+# Print the retrieved data
+print(data)
+
 # article_collection.delete() to delete the collection
+
+# querying
+qry_str = "best data science library?"
+
+# we can directly use the qry_str, chromadb will automatically convert it into a vector
+
+print(article_collection.query(query_texts=qry_str, n_results=1))
+
+
