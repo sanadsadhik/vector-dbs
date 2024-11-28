@@ -1,5 +1,6 @@
 import chromadb
 import pandas as pd
+from chromadb.config import Settings
 
 df = pd.read_csv('medium_post_titles.csv')
 
@@ -20,7 +21,11 @@ df['meta'] = df.apply( lambda x: {
 
 # print(df.head(2))
 
-chroma_client = chromadb.Client() # in memory database
+# chroma_client = chromadb.Client() # in memory database
+chroma_client = chromadb.Client(Settings(
+    persist_directory="medium-chroma-db",
+    chroma_db_impl="duckdb+parquet"
+)) 
 
 #collection creation
 article_collection = chroma_client.create_collection(name='medium-article')
@@ -45,15 +50,17 @@ article_collection.upsert(
 data = article_collection.get()
 
 # Print the retrieved data
-print(data)
+# print(data)
 
 # article_collection.delete() to delete the collection
 
 # querying
-qry_str = "best data science library?"
+# qry_str = "best data science library?"
+qry_str = "best data Science AI library?"
 
 # we can directly use the qry_str, chromadb will automatically convert it into a vector
 
-print(article_collection.query(query_texts=qry_str, n_results=1))
+# print(article_collection.query(query_texts=qry_str, n_results=1))
+print(article_collection.query(query_texts=qry_str, n_results=2))
 
 
