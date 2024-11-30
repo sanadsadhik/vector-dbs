@@ -10,7 +10,7 @@ pc = Pinecone(api_key=PINECONE_API_KEY)
 pc.create_index(
     name="test",
     dimension=3,
-    spec=ServerlessSpec(
+    spec=ServerlessSpec(    
         cloud="aws",
         region="us-east-1"
     )
