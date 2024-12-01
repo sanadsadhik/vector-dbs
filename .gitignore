@@ -1,3 +1,4 @@
 config.py
 medium_post_titles.csv
 .vs
+__pycache__
