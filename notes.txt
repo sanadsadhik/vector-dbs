@@ -1,0 +1,8 @@
+index and collection difference
+
+index - named container of vectors
+can query an index
+
+collection - static copy of an index
+cannot query a collection
+useful to backup an index
