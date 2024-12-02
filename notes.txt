@@ -6,3 +6,16 @@ can query an index
 collection - static copy of an index
 cannot query a collection
 useful to backup an index
+
+distance metrics - how to calculate the shortest distance
+1. 
+Euclidean - shortest distance between 2 vectors
+values = 0 to infinity
+
+2. 
+cosine - Angular distance
+normalized = values are from -1 to 1
+
+3.
+dot product
+Not normalized, more positive means more closer 
