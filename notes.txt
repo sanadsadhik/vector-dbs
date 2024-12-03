@@ -18,4 +18,6 @@ normalized = values are from -1 to 1
 
 3.
 dot product
-Not normalized, more positive means more closer 
+Not normalized, more positive means more closer
+
+Semantic search - human like search
